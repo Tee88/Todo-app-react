@@ -20,7 +20,7 @@ class TaskForm extends React.Component {
             done: false
         })
         e.preventDefault();
-
+        this.setState({ title: '' })
     }
 
     handleAllDone = () =>{
