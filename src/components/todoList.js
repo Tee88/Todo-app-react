@@ -2,9 +2,6 @@ import React from 'react';
 import Task from './task'
 
 class TodoList extends React.Component {
-    onDoneClick = (attr) => {
-        this.props.done(attr);
-    }
     render() {
         const undoneTasks = this.props.taskList
             .map((task) => <Task
@@ -12,7 +9,6 @@ class TodoList extends React.Component {
                 id={task.id} // check again later
                 title={task.title}
                 status={task.done}
-                onDoneClick={this.onDoneClick}
             />
             )
         return (
