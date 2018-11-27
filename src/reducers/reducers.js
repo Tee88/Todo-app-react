@@ -38,6 +38,7 @@ export const tasks = (state = INITIAL_STATE.tasks, action) => {
 
             const hasTask = state.some( task => task.title === action.payload.title)
 
+            console.log(action);
             return (hasTask) ?
             state :
             [
@@ -64,10 +65,11 @@ export const tasks = (state = INITIAL_STATE.tasks, action) => {
 }
 
 
-export const todoTitle = (state = INITIAL_STATE.newTodoTitle, action) => {
+export const newTodoTitle = (state = INITIAL_STATE.newTodoTitle, action) => {
     switch(action.type) {
 
         case UPDATE_TITLE :
+        console.log(action)
             return action.payload
         default : 
             return state

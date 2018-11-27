@@ -8,6 +8,7 @@ const UPDATE_TITLE = "UPDATE_TITLE"
 const uuidv4 = require('uuid/v4');
 
 export const newTask = (title) => {
+    console.log(title)
     return {
         type: ADD_TASK,
         payload: {

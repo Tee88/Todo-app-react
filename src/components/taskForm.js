@@ -1,26 +1,25 @@
 import React from 'react';
-const uuidv1 = require('uuid/v4');
+import { connect } from 'react-redux'
+import { newTask, updateTodoTitle, markAllAsDone } from '../actions'
 
 class TaskForm extends React.Component {
-    state = {
-        title: ''
-    }
+    // state = {
+    //     title: ''
+    // }
 
     handleChange = (e) => {
-        this.setState({ title: e.target.value })
+        // this.setState({ title: e.target.value })
+        this.props.updateTodoTitle(e.target.value)
     }
 
     handleCreateTask = (e) => {
-        if (this.state.title === ''){
+        if (this.props.title === ""){
             return
         }
-        this.props.createTask({
-            id: uuidv1(),
-            title: this.state.title,
-            done: false
-        })
+        console.log('this.props.title', this.props.title);
+        this.props.createTask(this.props.title)
         e.preventDefault();
-        this.setState({ title: '' })
+        this.props.updateTodoTitle('')
     }
 
     handleAllDone = () =>{
@@ -34,7 +33,7 @@ class TaskForm extends React.Component {
                     type="text"
                     className="form-control add-todo"
                     placeholder="Add todo"
-                    value={this.state.title}
+                    value={this.props.title}
                     onChange={this.handleChange}
 
                 />
@@ -46,4 +45,14 @@ class TaskForm extends React.Component {
     }
 }
 
-export default TaskForm
+const mapStateToProps = state => ({
+    title: state.newTodoTitle
+})
+
+const mapDispatchToProps = dispatch => ({
+    updateTodoTitle: title => dispatch(updateTodoTitle(title)),
+    allDone: () => dispatch(markAllAsDone()),
+    createTask: task => dispatch(newTask(task))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskForm)
