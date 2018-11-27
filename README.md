@@ -1,5 +1,5 @@
 # Todo list (React js)
-A to-do list built using React js (no backend).
+A to-do list built using React.js with Redux.
 
 ----------
 ## Demo ##
