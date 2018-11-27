@@ -13,7 +13,7 @@ class TodoMain extends React.Component {
             <div className="todolist not-done">
                 <h1>Todos</h1>
                 <TaskForm createTask={this.newTask} allDone={this.props.onAllDone}/>
-                <TodoList taskList={this.props.tasks} done={this.props.onDone} />
+                <TodoList taskList={this.props.tasks} />
                 <ItemsLeft tasksLeft={undoneCount} />
             </div>
 

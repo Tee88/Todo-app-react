@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { deleteTask, finishTask } from '../actions'
 
 class Task extends React.Component {
     onDone = () => {
-        this.props.onDoneClick({ id: this.props.id })
+        this.props.onDoneClick(this.props.id)
     }
     onDelete = () => {
-        this.props.onDeleteClick({ id: this.props.id })
+        this.props.onDeleteClick(this.props.id)
     }
     render() {
         if (!this.props.status) {
@@ -22,4 +24,10 @@ class Task extends React.Component {
     }
 }
 
-export default Task
+    
+const mapDispatchToProps = dispatch => ({
+    onDeleteClick: id => dispatch(deleteTask(id)),
+    onDoneClick: id => dispatch(finishTask(id))
+})
+
+export default connect(null, mapDispatchToProps)(Task)

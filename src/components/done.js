@@ -2,9 +2,6 @@ import React from 'react';
 import Task from './task'
 
 class Done extends React.Component {
-    deleteClicked = (attr) => {
-        this.props.delete(attr)
-    }
     render() {
         const doneTasks = this.props.tasks
             .map((task) => <Task
@@ -12,7 +9,6 @@ class Done extends React.Component {
                 id={task.id} // check again later
                 title={task.title}
                 status={task.done}
-                onDeleteClick={this.deleteClicked}
             />
             )
         return (
